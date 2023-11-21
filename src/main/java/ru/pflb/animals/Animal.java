@@ -22,7 +22,12 @@ public abstract class Animal {
         this.maxRunDistance = maxRunDistance;
         this.name = name;
     }
-
+    public int getMaxRunDistance(){
+        return maxRunDistance;
+    }
+    public int getMaxSwimDistance(){
+        return maxSwimDistance;
+    }
 
 
     public String getName(){
@@ -36,31 +41,32 @@ public abstract class Animal {
     }
 
     public void run(Road road) {
-        if(isHindered){
+        if(hasObstacles()){
             return;
         }
-        isHindered = true;
-        if(road.getLength() > maxRunDistance) {
-            out.printf("%s не смог пробежать %d м \n", name, road.getLength());
+        if(road.getLength() > getMaxRunDistance()) {
+            makeHindered();
+            out.printf("%s не смог пробежать %d м \n", getName(), road.getLength());
             return;
         }
-        isHindered = false;
-        out.printf("%s пробежал %d м \n", name, road.getLength());
+        out.printf("%s пробежал %d м \n", getName(), road.getLength());
 
     }
     public void swim(Pool pool) {
-        if(isHindered){
+        if(hasObstacles()){
             return;
         }
-        isHindered = true;
-        if(pool.getLength() > maxSwimDistance) {
-            out.printf("%s не смог проплыть %d м \n", name, pool.getLength());
+        if(pool.getLength() > getMaxSwimDistance()) {
+            makeHindered();
+            out.printf("%s не смог проплыть %d м \n", getName(), pool.getLength());
             return;
         }
-        isHindered = false;
-        out.printf("%s проплыл %d м \n", name, pool.getLength());
+        out.printf("%s проплыл %d м \n", getName(), pool.getLength());
     }
     public boolean hasObstacles() {
         return isHindered;
+    }
+    public void makeHindered() {
+        isHindered = true;
     }
 }

@@ -24,9 +24,9 @@ public class Main {
         int distance = 1 + random.nextInt(1000);
         Road road = new Road( distance);
         Pool pool = new Pool(distance);
-
+//        Сюда можно вставить любое количество дргуих животных
         Class[] species = {Cat.class, Dog.class, Humster.class, Rat.class, Tiger.class, Wolf.class};
-
+//        В задании написали создать МАССИВ животных
         Animal[] animals = new Animal[0];
         for(Class cl : species) {
             int counter = 1 + random.nextInt(3);
